@@ -1,9 +1,9 @@
 class CreateReviews < ActiveRecord::Migration
   def change
     create_table :reviews do |t|
-      t.string :body        # comments
-      t.integer :user_id    # creator
-      t.integer :player_id  # subject of review
+      t.string :body,       null:false  # comments
+      t.integer :user_id,   null:false  # creator
+      t.integer :player_id, null:false  # subject of review
 
       t.timestamps
     end
