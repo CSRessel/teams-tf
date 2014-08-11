@@ -12,11 +12,13 @@ class AuthController < ApplicationController
       new_user.save
       sign_in new_user
     end
+    flash[:success] = 'Signed in'
     redirect_to root_url
   end
 
   def sign_out
     log_off
+    flash[:success] = 'Signed out'
     redirect_to root_url
   end
 end

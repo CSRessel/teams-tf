@@ -1,5 +1,25 @@
 Rails.application.routes.draw do
 
+  get 'players/new'
+
+  get 'players/create'
+
+  get 'players/index'
+
+  get 'players/show'
+
+  get 'players/destroy'
+
+  get 'teams/new'
+
+  get 'teams/create'
+
+  get 'teams/index'
+
+  get 'teams/show'
+
+  get 'teams/destroy'
+
   # static pages
   root 'static#index'
   get 'about', to: 'static#about'
