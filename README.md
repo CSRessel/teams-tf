@@ -1,17 +1,9 @@
 Team/Player finding for competitive TF2
 =======================================
 
-A resource for players to find teams and teams to find players.
+A database and browsing interface for LFT/LFP advertisements in the competitive TF2 community.
 
-Areas:
-- North America
-- Europe
-
-Gametypes:
-- Highlander
-- 6v6
-
-Leagues:
-- UGC (Iron, Steel, Silver, Gold, Platinum)
-- ESEA (Open, Invite)
-- ETF2L (Div 6 through 1)
+Supported Leauges:
+- UGC Highlander
+- ESEA 6v6
+- ETF2l 6v6
