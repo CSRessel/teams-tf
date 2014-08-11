@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811011744) do
+ActiveRecord::Schema.define(version: 20140811024209) do
 
   create_table "players", force: true do |t|
     t.string   "game_type",                  null: false
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 20140811011744) do
     t.datetime "updated_at"
   end
 
+  add_index "teams", ["name"], name: "index_teams_on_name", unique: true
+
   create_table "users", force: true do |t|
     t.string   "nick",       null: false
     t.string   "profile",    null: false
@@ -70,5 +72,7 @@ ActiveRecord::Schema.define(version: 20140811011744) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["profile"], name: "index_users_on_profile", unique: true
 
 end
