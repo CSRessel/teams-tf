@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   # authentication
   post 'auth/steam/callback' => 'auth#auth_callback'
-  get 'logout' => 'auth#logout'
+  get 'sign_out' => 'auth#sign_out'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -6,15 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-@user1 = User.create!(nick: "allen", profile: "blah", avatar: "http://www.alluserpics.com/data/thumbnails/14/christmas_cat.gif")
+@user1 = User.create!(uid: "1234", nick: "allen", profile: "blah", avatar: "http://www.alluserpics.com/data/thumbnails/14/christmas_cat.gif")
 @user1.save!
-@user2 = User.create!(nick: "bob", profile: "bleh", avatar: "http://www.alluserpics.com/data/thumbnails/14/christmas_cat.gif")
+@user2 = User.create!(uid: "2234", nick: "bob", profile: "bleh", avatar: "http://www.alluserpics.com/data/thumbnails/14/christmas_cat.gif")
 @user2.save!
-@user3 = User.create!(nick: "cliff", profile: "blih", avatar: "http://www.alluserpics.com/data/thumbnails/14/christmas_cat.gif")
+@user3 = User.create!(uid: "3234", nick: "cliff", profile: "blih", avatar: "http://www.alluserpics.com/data/thumbnails/14/christmas_cat.gif")
 @user3.save!
-@user4 = User.create!(nick: "dave", profile: "bloh", avatar: "http://www.alluserpics.com/data/thumbnails/14/christmas_cat.gif")
+@user4 = User.create!(uid: "4234", nick: "dave", profile: "bloh", avatar: "http://www.alluserpics.com/data/thumbnails/14/christmas_cat.gif")
 @user4.save!
-@user5 = User.create!(nick: "eric", profile: "bluh", avatar: "http://www.alluserpics.com/data/thumbnails/14/christmas_cat.gif")
+@user5 = User.create!(uid: "5234", nick: "eric", profile: "bluh", avatar: "http://www.alluserpics.com/data/thumbnails/14/christmas_cat.gif")
 @user5.save!
 
 @player1 = Player.create!(game_type: "highlander", league: "UGC", level: "steel", notes: "i b super pro shpee", user_id: 3, spy: true)

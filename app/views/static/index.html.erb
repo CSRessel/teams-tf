@@ -1,9 +1,9 @@
-<% if session.key? :user %>
+<% if signed_in? %>
   <h3>Current user:</h3>
-  <%= image_tag session[:user][:image] %>
-  <p><%= session[:user][:nickname] %></p>
+  <%= image_tag current_user.avatar %>
+  <p><%= current_user.nick %></p>
   <p>
-    <%= link_to "logout", '/logout' %>
+    <%= link_to "sign out", 'sign_out' %>
   </p>
 <% else %>
   <%= link_to image_tag("http://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_large_border.png"), '/auth/steam' %>

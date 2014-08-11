@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811024209) do
+ActiveRecord::Schema.define(version: 20140811033931) do
 
   create_table "players", force: true do |t|
     t.string   "game_type",                  null: false
@@ -64,15 +64,19 @@ ActiveRecord::Schema.define(version: 20140811024209) do
   add_index "teams", ["name"], name: "index_teams_on_name", unique: true
 
   create_table "users", force: true do |t|
-    t.string   "nick",       null: false
-    t.string   "profile",    null: false
-    t.string   "avatar",     null: false
+    t.string   "uid",            null: false
+    t.string   "nick",           null: false
+    t.string   "profile",        null: false
+    t.string   "avatar",         null: false
     t.string   "location"
     t.string   "timezone"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "remember_token"
   end
 
   add_index "users", ["profile"], name: "index_users_on_profile", unique: true
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+  add_index "users", ["uid"], name: "index_users_on_uid", unique: true
 
 end

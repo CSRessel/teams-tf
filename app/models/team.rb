@@ -1,13 +1,13 @@
 class Team < ActiveRecord::Base
   belongs_to :user
 
-  validates :name,      presence: true
-  validates :game_type, presence: true, inclusion: { in %w(6v6 highlander) }
-  validates :league,    presence: true, inclusion: { in %w(UGC ESEA ETF2L) }
-  validates :league,    presence: true, inclusion: { in %w(ESEA ETF2L) },                       if: :is_6v6?)
-  validates :level,     presence: true, inclusion: { in %w(iron steel silver gold platinum) },  if: :is_UGC?
-  validates :level,     presence: true, inclusion: { in %w(open invite) },                      if: :is_ESEA?
-  validates :level,     presence: true, inclusion: { in %w(div1 div2 div3 div4 div5 div6) },    if: :is_ETF2L?
+  validates :name,      presence: true, uniqueness: true
+  validates :game_type, presence: true, inclusion: { in: %w(6v6 highlander) }
+  validates :league,    presence: true, inclusion: { in: %w(UGC ESEA ETF2L) }
+  validates :league,    presence: true, inclusion: { in: %w(ESEA ETF2L) },                       if: :is_6v6?
+  validates :level,     presence: true, inclusion: { in: %w(iron steel silver gold platinum) },  if: :is_UGC?
+  validates :level,     presence: true, inclusion: { in: %w(open invite) },                      if: :is_ESEA?
+  validates :level,     presence: true, inclusion: { in: %w(div1 div2 div3 div4 div5 div6) },    if: :is_ETF2L?
   validates :user_id,   presence: true
   validate  :has_class?
 
