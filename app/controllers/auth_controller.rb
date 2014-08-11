@@ -7,12 +7,16 @@ class AuthController < ApplicationController
     user = User.find_by(uid: auth.uid)
     if user
       sign_in user
+      flash[:success] = 'Signed in'
     else
       new_user = User.new(uid: auth.uid, nick: auth.info['nickname'], profile: auth.info['urls']['Profile'], avatar: auth.info['image'], location: auth.info['location'])
-      new_user.save
-      sign_in new_user
+      if new_user.save
+        sign_in new_user
+        flash[:success] = 'Signed in'
+      else
+        flash[:error] = 'Error: unable to sign in'
+      end
     end
-    flash[:success] = 'Signed in'
     redirect_to root_url
   end
 

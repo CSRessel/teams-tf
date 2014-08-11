@@ -31,6 +31,7 @@ class TeamsController < ApplicationController
 
   def destroy
     Team.find(params[:id]).destroy
+    flash[:success] = 'Team advertisement deleted'
     redirect_to teams_path
   end
 
