@@ -10,7 +10,7 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     @team.user_id = current_user.id
     if @team.save
-      flash[:success] = 'Team advertisement created'
+      flash[:success] = 'Team listing created'
       redirect_to teams_path
     else
       render 'new'
@@ -30,9 +30,14 @@ class TeamsController < ApplicationController
   end
 
   def destroy
-    Team.find(params[:id]).destroy
-    flash[:success] = 'Team advertisement deleted'
-    redirect_to teams_path
+    @team = Team.find(params[:id])
+    if @team.destroy
+      flash[:success] = 'Team listing deleted'
+      redirect_to teams_path
+    else
+      flash[:error] = 'Unable to delete team listing'
+      redirect_to team_path(@team)
+    end
   end
 
   private

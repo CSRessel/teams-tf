@@ -10,7 +10,7 @@ class PlayersController < ApplicationController
     @player = Player.new(player_params)
     @player.user_id = current_user.id
     if @player.save
-      flash[:success] = 'Player advertisement created'
+      flash[:success] = 'Player listing created'
       redirect_to players_path
     else
       render 'new'
@@ -28,12 +28,18 @@ class PlayersController < ApplicationController
   def show
     @player = Player.find(params[:id])
     @reviews = Review.where(player_id: params[:id])
+    @review = Review.new(player_id: params[:id])
   end
 
   def destroy
-    Player.find(params[:id]).destroy
-    flash[:success] = 'Player advertisement deleted'
-    redirect_to players_path
+    @player = Player.find(params[:id])
+    if @player.destroy
+      flash[:success] = 'Player listing deleted'
+      redirect_to players_path
+    else
+      flash[:error] = 'Unable to delete player listing'
+      redirect to player_path(@player)
+    end
   end
 
   private

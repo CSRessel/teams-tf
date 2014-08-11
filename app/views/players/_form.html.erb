@@ -1,0 +1,49 @@
+<p>Stars indicate necessary fields.</p>
+<%= form_for(@player) do |form| %>
+  <% if form.object.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-error">
+        The form contains <%= pluralize(form.object.errors.count, "error") %>.
+      </div>
+      <ul>
+      <% form.object.errors.full_messages.each do |msg| %>
+        <li>* <%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div><%= form.label :game_type, "*Game type" %><br />
+    <%= form.select :game_type, options_for_select(%w[6v6 highlander]), include_blank: true %></div>
+
+  <div><%= form.label :league, "*League" %><br />
+    <%= form.select :league, options_for_select(%w[ESEA ETF2L UGC]), include_blank: true %></div>
+
+  <div><%= form.label :level, "*Level of play" %><br />
+    <%= form.select :level, options_for_select(%w[open invite div6 div5 div4 div3 div2 div1 iron steel silver gold platinum]), include_blank: true %></div>
+
+  <div><%= form.label :notes, "Extra notes or comments" %><br />
+    <%= form.text_area :notes, cols: 70, rows: 10 %></div>
+
+  <p>Mark at least one:</p>
+  <div><%= form.label :scout, "Scout" %><br />
+    <%= form.check_box :scout %></div>
+  <div><%= form.label :soldier, "Soldier" %><br />
+    <%= form.check_box :soldier %></div>
+  <div><%= form.label :pyro, "Pyro" %><br />
+    <%= form.check_box :pyro %></div>
+  <div><%= form.label :demoman, "Demoman" %><br />
+    <%= form.check_box :demoman %></div>
+  <div><%= form.label :heavy, "Heavy" %><br />
+    <%= form.check_box :heavy %></div>
+  <div><%= form.label :engineer, "Engineer" %><br />
+    <%= form.check_box :engineer %></div>
+  <div><%= form.label :medic, "Medic" %><br />
+    <%= form.check_box :medic %></div>
+  <div><%= form.label :sniper, "Sniper" %><br />
+    <%= form.check_box :sniper %></div>
+  <div><%= form.label :spy, "Spy" %><br />
+    <%= form.check_box :spy %></div>
+
+  <%= form.submit "Create player listing" %>
+<% end %>

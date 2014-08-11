@@ -1,25 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'players/new'
-
-  get 'players/create'
-
-  get 'players/index'
-
-  get 'players/show'
-
-  get 'players/destroy'
-
-  get 'teams/new'
-
-  get 'teams/create'
-
-  get 'teams/index'
-
-  get 'teams/show'
-
-  get 'teams/destroy'
-
   # static pages
   root 'static#index'
   get 'about', to: 'static#about'
@@ -27,6 +7,16 @@ Rails.application.routes.draw do
   # authentication
   post 'auth/steam/callback' => 'auth#auth_callback'
   get 'sign_out' => 'auth#sign_out'
+
+  # review paths
+  get 'reviews/create',       to: 'reviews#create',   as: 'create_review'
+  get 'reviews/:id/destroy',  to: 'reveiws#destroy',  as: 'destroy_review'
+
+  # player paths
+  resources :players
+
+  # team paths
+  resources :teams
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

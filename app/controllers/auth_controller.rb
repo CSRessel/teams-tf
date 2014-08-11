@@ -14,7 +14,7 @@ class AuthController < ApplicationController
         sign_in new_user
         flash[:success] = 'Signed in'
       else
-        flash[:error] = 'Error: unable to sign in'
+        flash[:error] = 'Unable to sign in'
       end
     end
     redirect_to root_url
