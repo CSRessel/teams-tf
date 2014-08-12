@@ -39,7 +39,6 @@ class TeamsController < ApplicationController
     # TODO: use ransack for searching
     #@search = Players.search(params[:q])
     #@players = @search.result(distinct: true).paginate(:page => params[:page], :per_page => 15)
-
     @teams = Team.all
   end
 

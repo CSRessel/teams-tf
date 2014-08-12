@@ -17,7 +17,12 @@ Rails.application.routes.draw do
   resources :users
 
   # review paths
-  resources :reviews
+  #resources :reviews
+  match 'players/:id/review', to: 'reviews#new',      via: [:get],          as: 'new_review'
+  match 'reviews',            to: 'reviews#create',   via: [:post],         as: 'reviews'
+  match 'reviews/:id',        to: 'reviews#update',   via: [:put, :patch]
+  match 'reviews/:id',        to: 'reviews#destroy',  via: [:delete]
+  match 'reviews/:id/edit',   to: 'reviews#edit',     via: [:get],          as: 'edit_review'
 
   # player paths
   resources :players

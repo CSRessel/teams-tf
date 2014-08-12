@@ -28,6 +28,7 @@
   <div><%= form.label :location, "*Location" %><br />
     <%= form.select :location, options_for_select(["NA", "EU"]) %></div>
 
+  <%# TODO: add char count %>
   <div><%= form.label :notes, "Extra notes or comments" %><br />
     <%= form.text_area :notes, cols: 70, rows: 10 %></div>
 

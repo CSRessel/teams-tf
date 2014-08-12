@@ -19,6 +19,7 @@
   <div><%= form.label :league_level, "*League and level" %><br />
     <%= form.select :league_level, options_for_select(["UGC Iron", "UGC Steel", "UGC Silver", "UGC Gold", "UGC Platinum", "ESEA Open", "ESEA Invite", "ETF2L Div6", "ETF2L Div5", "ETF2L Div4", "ETF2L Div3", "ETF2L Div2", "ETF2L Div1"]), include_blank: true %></div>
 
+  <%# TODO: add char count %>
   <div><%= form.label :notes, "Extra notes or comments" %><br />
     <%= form.text_area :notes, cols: 70, rows: 10 %></div>
 

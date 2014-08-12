@@ -3,7 +3,9 @@ class ReviewsController < ApplicationController
   before_filter :require_ownership, only:[:edit, :update, :destroy]
 
   def new
-    # TODO: assign review.player_id ???
+    @review = Review.new
+    # TODO: Fix this not being assigned
+    @review.player_id = params[:id]
   end
 
   def create
@@ -14,7 +16,7 @@ class ReviewsController < ApplicationController
       redirect_to player_path(Player.find(@review.player_id))
     else
       flash[:error] = 'Unable to post review'
-      redirect_to player_path(Player.find(@review.player_id))
+      render 'new'
     end
   end
 
@@ -47,7 +49,7 @@ class ReviewsController < ApplicationController
   private
 
     def review_params
-      params.require(:review).permit(:body)
+      params.require(:review).permit(:body, :player_id)
     end
 
     def require_sign_in

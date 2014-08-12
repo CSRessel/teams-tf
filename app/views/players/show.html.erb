@@ -10,6 +10,8 @@
 <p>Medic:     <%= @player.medic    %></p>
 <p>Sniper:    <%= @player.sniper   %></p>
 <p>Spy:       <%= @player.spy      %></p>
-<br />
+<hr />
 <h3>Reviews</h3>
+<hr />
 <%= render @reviews %>
+<%= link_to "New review", new_review_path(@player) %>

@@ -13,7 +13,7 @@ class AuthController < ApplicationController
         flash[:alert] = 'Unable to sync user info with Steam'
       end
       flash[:success] = 'Signed in'
-      redirect_back_or(user_path(user))
+      redirect_back_or(root_path)
     else
       new_user = User.new(uid: auth.uid, nick: auth.info['nickname'], steam_url: auth.info['urls']['Profile'], avatar: auth.info['image'])
       if new_user.save

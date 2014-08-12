@@ -20,7 +20,6 @@ class PlayersController < ApplicationController
   def show
     @player = Player.find(params[:id])
     @reviews = Review.where(player_id: params[:id])
-    @review = Review.new(player_id: params[:id])
   end
 
   def edit
@@ -41,7 +40,6 @@ class PlayersController < ApplicationController
     # TODO: use ransack for searching
     #@search = Players.search(params[:q])
     #@players = @search.result(distinct: true).paginate(:page => params[:page], :per_page => 15)
-
     @players = Player.all
   end
 

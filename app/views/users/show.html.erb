@@ -3,12 +3,15 @@
 <%= @user.nick %><br />
 <%= link_to "Steam profile", @user.steam_url %><br />
 <%= @user.location.nil? ? "" : @user.location %><br />
+<hr />
+<%= link_to "Edit your profile", edit_user_path(@user) %>
 <% if @players.size > 0 %>
   <h3>Your player listings</h3>
   <% @players.each do |p| %>
     <hr />
     <%= link_to p.league_level, player_path(p) %>
   <% end %>
+  <hr />
 <% end %>
 <% if @teams.size > 0 %>
   <h3>Your team listings</h3>
@@ -16,4 +19,5 @@
     <hr />
     <%= link_to t.league_level, team_path(t) %>
   <% end %>
+  <hr />
 <% end %>
