@@ -11,23 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811033931) do
+ActiveRecord::Schema.define(version: 20140812012459) do
 
   create_table "players", force: true do |t|
-    t.string   "game_type",                  null: false
-    t.string   "league",                     null: false
-    t.string   "level",                      null: false
+    t.string   "game_type",                    null: false
+    t.string   "league_level",                 null: false
     t.string   "notes"
-    t.integer  "user_id",                    null: false
-    t.boolean  "scout",      default: false
-    t.boolean  "soldier",    default: false
-    t.boolean  "pyro",       default: false
-    t.boolean  "demoman",    default: false
-    t.boolean  "heavy",      default: false
-    t.boolean  "engineer",   default: false
-    t.boolean  "medic",      default: false
-    t.boolean  "sniper",     default: false
-    t.boolean  "spy",        default: false
+    t.string   "location",                     null: false
+    t.integer  "user_id",                      null: false
+    t.boolean  "scout",        default: false
+    t.boolean  "soldier",      default: false
+    t.boolean  "pyro",         default: false
+    t.boolean  "demoman",      default: false
+    t.boolean  "heavy",        default: false
+    t.boolean  "engineer",     default: false
+    t.boolean  "medic",        default: false
+    t.boolean  "sniper",       default: false
+    t.boolean  "spy",          default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -41,22 +41,22 @@ ActiveRecord::Schema.define(version: 20140811033931) do
   end
 
   create_table "teams", force: true do |t|
-    t.string   "name",                       null: false
+    t.string   "name",                         null: false
     t.string   "tag"
-    t.string   "game_type",                  null: false
-    t.string   "league",                     null: false
-    t.string   "level",                      null: false
+    t.string   "game_type",                    null: false
+    t.string   "league_level",                 null: false
     t.string   "notes"
-    t.integer  "user_id",                    null: false
-    t.boolean  "scout",      default: false
-    t.boolean  "soldier",    default: false
-    t.boolean  "pyro",       default: false
-    t.boolean  "demoman",    default: false
-    t.boolean  "heavy",      default: false
-    t.boolean  "engineer",   default: false
-    t.boolean  "medic",      default: false
-    t.boolean  "sniper",     default: false
-    t.boolean  "spy",        default: false
+    t.string   "location",                     null: false
+    t.integer  "user_id",                      null: false
+    t.boolean  "scout",        default: false
+    t.boolean  "soldier",      default: false
+    t.boolean  "pyro",         default: false
+    t.boolean  "demoman",      default: false
+    t.boolean  "heavy",        default: false
+    t.boolean  "engineer",     default: false
+    t.boolean  "medic",        default: false
+    t.boolean  "sniper",       default: false
+    t.boolean  "spy",          default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20140811033931) do
   create_table "users", force: true do |t|
     t.string   "uid",            null: false
     t.string   "nick",           null: false
-    t.string   "profile",        null: false
+    t.string   "steam_url",      null: false
     t.string   "avatar",         null: false
     t.string   "location"
     t.string   "timezone"
@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 20140811033931) do
     t.string   "remember_token"
   end
 
-  add_index "users", ["profile"], name: "index_users_on_profile", unique: true
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+  add_index "users", ["steam_url"], name: "index_users_on_steam_url", unique: true
   add_index "users", ["uid"], name: "index_users_on_uid", unique: true
 
 end

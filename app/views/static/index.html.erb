@@ -1,10 +1,2 @@
-<% if signed_in? %>
-  <h3>Current user:</h3>
-  <%= image_tag current_user.avatar %>
-  <p><%= current_user.nick %></p>
-  <p>
-    <%= link_to "sign out", 'sign_out' %>
-  </p>
-<% else %>
-  <%= link_to image_tag("http://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_large_border.png"), '/auth/steam' %>
-<% end %>
+<%= link_to "LFP", lfp_path %><br />
+<%= link_to "LFT", lft_path %><br />

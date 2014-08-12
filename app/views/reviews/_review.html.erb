@@ -1,0 +1,7 @@
+<b><%= User.find(review.user_id).nick %></b>
+<p><%= review.body %></p>
+<% if current_user.id == review.user_id %>
+  <%= link_to "Edit", edit_review_path(review) %>
+  <%= link_to "Delete", destroy_review_path(review) %>
+<% end %>
+<br />

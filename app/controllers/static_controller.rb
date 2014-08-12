@@ -11,9 +11,12 @@ class StaticController < ApplicationController
   def denied
   end
 
-  def LFT
+  def goodbye
   end
 
-  def LFP
+  def lft
+  end
+
+  def lfp
   end
 end

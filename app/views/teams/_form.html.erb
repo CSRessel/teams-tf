@@ -22,11 +22,11 @@
   <div><%= form.label :game_type, "*Game type" %><br />
     <%= form.select :game_type, options_for_select(%w[6v6 highlander]), include_blank: true %></div>
 
-  <div><%= form.label :league, "*League" %><br />
-    <%= form.select :league, options_for_select(%w[ESEA ETF2L UGC]), include_blank: true %></div>
+  <div><%= form.label :league_level, "*League and level" %><br />
+    <%= form.select :league_level, options_for_select(["UGC Iron", "UGC Steel", "UGC Silver", "UGC Gold", "UGC Platinum", "ESEA Open", "ESEA Invite", "ETF2L Div6", "ETF2L Div5", "ETF2L Div4", "ETF2L Div3", "ETF2L Div2", "ETF2L Div1"]), include_blank: true %></div>
 
-  <div><%= form.label :level, "*Level of play" %><br />
-    <%= form.select :level, options_for_select(%w[open invite div6 div5 div4 div3 div2 div1 iron steel silver gold platinum]), include_blank: true %></div>
+  <div><%= form.label :location, "*Location" %><br />
+    <%= form.select :location, options_for_select(["NA", "EU"]) %></div>
 
   <div><%= form.label :notes, "Extra notes or comments" %><br />
     <%= form.text_area :notes, cols: 70, rows: 10 %></div>
@@ -51,5 +51,5 @@
   <div><%= form.label :spy, "Spy" %><br />
     <%= form.check_box :spy %></div>
 
-  <%= form.submit "Create team listing" %>
+  <%= form.submit "Submit team listing" %>
 <% end %>

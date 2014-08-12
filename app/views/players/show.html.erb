@@ -1,2 +1,15 @@
 <h1>Players#show</h1>
-<p>Find me in app/views/players/show.html.erb</p>
+<br />
+<%= link_to User.find(@player.user_id).nick, user_path(User.find(@player.user_id)) %> | <%= @player.game_type %> | <%= @player.league_level %> | <%= @player.location %>
+<p>Scout:     <%= @player.scout    %></p>
+<p>Soldier:   <%= @player.soldier  %></p>
+<p>Pyro:      <%= @player.pyro     %></p>
+<p>Demoman:   <%= @player.demoman  %></p>
+<p>Heavy:     <%= @player.heavy    %></p>
+<p>Engineer:  <%= @player.engineer %></p>
+<p>Medic:     <%= @player.medic    %></p>
+<p>Sniper:    <%= @player.sniper   %></p>
+<p>Spy:       <%= @player.spy      %></p>
+<br />
+<h3>Reviews</h3>
+<%= render @reviews %>

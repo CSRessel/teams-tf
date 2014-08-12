@@ -1,14 +1,15 @@
 class User < ActiveRecord::Base
   before_create :create_remember_token
+  before_destroy :destroy_players_teams_reviews
 
   has_many :teams
   has_many :players
   has_many :reviews
 
-  validates :uid,     presence: true, uniqueness: true
-  validates :nick,    presence: true
-  validates :profile, presence: true, uniqueness: true
-  validates :avatar,  presence: true
+  validates :uid,       presence: true, uniqueness: true
+  validates :nick,      presence: true
+  validates :steam_url, presence: true, uniqueness: true
+  validates :avatar,    presence: true
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
@@ -22,5 +23,11 @@ class User < ActiveRecord::Base
 
     def create_remember_token
       self.remember_token = User.digest(User.new_remember_token)
+    end
+
+    def destroy_players_teams_reviews
+      self.players.delete_all
+      self.teams.delete_all
+      self.reviews.delete_all
     end
 end

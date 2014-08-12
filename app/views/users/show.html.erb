@@ -1,0 +1,19 @@
+<h1>Users#show</h1>
+<%= link_to image_tag(@user.avatar) %><br />
+<%= @user.nick %><br />
+<%= link_to "Steam profile", @user.steam_url %><br />
+<%= @user.location.nil? ? "" : @user.location %><br />
+<% if @players.size > 0 %>
+  <h3>Your player listings</h3>
+  <% @players.each do |p| %>
+    <hr />
+    <%= link_to p.league_level, player_path(p) %>
+  <% end %>
+<% end %>
+<% if @teams.size > 0 %>
+  <h3>Your team listings</h3>
+  <% @teams.each do |t| %>
+    <hr />
+    <%= link_to t.league_level, team_path(t) %>
+  <% end %>
+<% end %>

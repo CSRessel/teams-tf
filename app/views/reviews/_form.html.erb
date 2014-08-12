@@ -1,0 +1,19 @@
+<%= form_for(@review) do |form| %>
+  <% if form.object.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-error">
+        The form contains <%= pluralize(form.object.errors.count, "error") %>.
+      </div>
+      <ul>
+      <% form.object.errors.full_messages.each do |msg| %>
+        <li>* <%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div><%= form.label :body, "Review text (140 characters)" %><br />
+    <%= form.text_area :body, cols: 70, rows: 10 %></div>
+
+  <%= form.submit "Post review" %>
+<% end %>

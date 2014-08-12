@@ -2,15 +2,22 @@ Rails.application.routes.draw do
 
   # static pages
   root 'static#index'
-  get 'about', to: 'static#about'
+  get 'about',    to: 'static#about'
+  get 'contact',  to: 'static#contact'
+  get 'denied',   to: 'static#denied'
+  get 'goodbye',  to: 'static#goodbye'
+  get 'lfp',      to: 'static#lfp'
+  get 'lft',      to: 'static#lft'
 
   # authentication
   post 'auth/steam/callback' => 'auth#auth_callback'
   get 'sign_out' => 'auth#sign_out'
 
+  # user paths
+  resources :users
+
   # review paths
-  get 'reviews/create',       to: 'reviews#create',   as: 'create_review'
-  get 'reviews/:id/destroy',  to: 'reveiws#destroy',  as: 'destroy_review'
+  resources :reviews
 
   # player paths
   resources :players

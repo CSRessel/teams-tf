@@ -1,4 +1,3 @@
 <div>
-  <%= User.find(player.user_id).nick %> | <%= player.game_type %> | <%= player.league %> | <%= player.level %>
+  <%= link_to User.find(player.user_id).nick, player_path(player) %> | <%= player.game_type %> | <%= player.league_level %> | <%= player.location %>
 </div>
-<hr />

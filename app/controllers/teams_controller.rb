@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_filter :require_sign_in, only:[:new, :create, :destroy]
+  before_filter :require_sign_in, only:[:new, :create, :show, :edit, :update, :destroy]
   before_filter :require_ownership, only:[:destroy]
 
   def new
@@ -17,16 +17,30 @@ class TeamsController < ApplicationController
     end
   end
 
+  def show
+    @team = Team.find(params[:id])
+  end
+
+  def edit
+    @team = Team.find(params[:id])
+  end
+
+  def update
+    @team = Team.find(params[:id])
+    if @team.update_attributes(team_params)
+      flash[:success] = 'Team listing updated'
+      redirect_to @team
+    else
+      render 'edit'
+    end
+  end
+
   def index
     # TODO: use ransack for searching
     #@search = Players.search(params[:q])
     #@players = @search.result(distinct: true).paginate(:page => params[:page], :per_page => 15)
 
     @teams = Team.all
-  end
-
-  def show
-    @team = Team.find(params[:id])
   end
 
   def destroy
@@ -43,18 +57,21 @@ class TeamsController < ApplicationController
   private
 
     def team_params
-      params.require(:team).permit(:name, :tag, :game_type, :league, :level, :notes, :scout, :soldier, :pyro, :demoman, :heavy, :engineer, :medic, :sniper, :spy)
+      params.require(:team).permit(:name, :tag, :game_type, :league_level, :location, :notes, :scout, :soldier, :pyro, :demoman, :heavy, :engineer, :medic, :sniper, :spy)
     end
 
     def require_sign_in
       if !signed_in?
-        redirect_to root_path
+        store_location
+        flash[:error] = 'Sign in required'
+        redirect_to denied_path
       end
     end
 
     def require_ownership
       if current_user.id != Team.find(params[:id]).user_id
-        redirect_to root_path
+        flash[:error] = 'You cannot modify this'
+        redirect_to team_path(Team.find(params[:id]))
       end
     end
 end

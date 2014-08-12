@@ -1,0 +1,6 @@
+<h1>Users#edit</h1>
+<br />
+<%= render 'form' %>
+<br />
+<%= link_to 'Delete teams.tf profile', user_path(@user),
+  :confirm => 'Are you sure you would like to delete your account, all account data, and any posts or listings you\'ve created?', :method => :delete %>
