@@ -26,8 +26,14 @@ class User < ActiveRecord::Base
     end
 
     def destroy_players_teams_reviews
-      self.players.delete_all
-      self.teams.delete_all
-      self.reviews.delete_all
+      self.players.each do |p|
+        p.destroy
+      end
+      self.teams.each do |t|
+        t.destroy
+      end
+      self.reviews.each do |r|
+        r.destroy
+      end
     end
 end

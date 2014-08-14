@@ -8,20 +8,20 @@ class AuthController < ApplicationController
     if user
       sign_in user
       if user.update_attributes(nick: auth.info['nickname'], steam_url: auth.info['urls']['Profile'], avatar: auth.info['image'])
-        flash[:alert] = 'User info synced with Steam'
+        flash[:alert] = 'user info synced with Steam'
       else
-        flash[:alert] = 'Unable to sync user info with Steam'
+        flash[:alert] = 'unable to sync user info with Steam'
       end
-      flash[:success] = 'Signed in'
+      flash[:success] = 'signed in'
       redirect_back_or(root_path)
     else
       new_user = User.new(uid: auth.uid, nick: auth.info['nickname'], steam_url: auth.info['urls']['Profile'], avatar: auth.info['image'])
       if new_user.save
         sign_in new_user
-        flash[:success] = 'Signed in'
+        flash[:success] = 'signed in'
         redirect_to user_path(new_user)
       else
-        flash[:error] = 'Unable to sign in'
+        flash[:error] = 'unable to sign in'
         redirect_to root_path
       end
     end
@@ -29,7 +29,7 @@ class AuthController < ApplicationController
 
   def sign_out
     log_off
-    flash[:success] = 'Signed out'
+    flash[:success] = 'signed out'
     redirect_to root_url
   end
 end

@@ -1,4 +1,3 @@
-<p>Stars indicate necessary fields.</p>
 <%= form_for(@player) do |form| %>
   <% if form.object.errors.any? %>
     <div id="error_explanation">
@@ -13,38 +12,77 @@
     </div>
   <% end %>
 
-  <div><%= form.label :game_type, "*Game type" %><br />
-    <%= form.select :game_type, options_for_select(%w[6v6 highlander]), include_blank: true %></div>
+  <div class="my-forms">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="text-right">
+            <div><%= form.label :game_type, "Game type" %><br />
+              <%= form.select :game_type, options_for_select(%w[6v6 Highlander]), include_blank: true %></div>
+            <br />
+            <div><%= form.label :league_level, "League and level" %><br />
+              <%= form.select :league_level, options_for_select(["UGC Iron", "UGC Steel", "UGC Silver", "UGC Gold", "UGC Platinum", "ESEA Open", "ESEA Invite", "ETF2L Div6", "ETF2L Div5", "ETF2L Div4", "ETF2L Div3", "ETF2L Div2", "ETF2L Div1"]), include_blank: true %></div>
+            <br />
+            <%# TODO: add char count %>
+            <div><%= form.label :notes, "Extra notes or comments" %><br />
+              <%= form.text_area :notes, cols: 80, rows: 9 %></div>
+            <br />
+          </div>
+        </div>
 
-  <div><%= form.label :league_level, "*League and level" %><br />
-    <%= form.select :league_level, options_for_select(["UGC Iron", "UGC Steel", "UGC Silver", "UGC Gold", "UGC Platinum", "ESEA Open", "ESEA Invite", "ETF2L Div6", "ETF2L Div5", "ETF2L Div4", "ETF2L Div3", "ETF2L Div2", "ETF2L Div1"]), include_blank: true %></div>
+        <div class="col-md-6">
+          <div><%= form.label :location, "Location" %><br />
+            <%= form.select :location, options_for_select(["NA", "EU"]), include_blank: true %></div>
+          <hr />
+          <p>Mark at least one:</p>
+          <hr />
+          <div class="containers">
+            <div class="row">
+	            <div class="col-md-3">
+                <div><%= form.label :scout, "Scout" %><br />
+                  <%= form.check_box :scout %></div>
+                <br />
+                <div><%= form.label :demoman, "Demoman" %><br />
+                  <%= form.check_box :demoman %></div>
+                <br />
+                <div><%= form.label :medic, "Medic" %><br />
+                  <%= form.check_box :medic %></div>
+                <br />
+              </div>
+	            <div class="col-md-3">
+                <div><%= form.label :soldier, "Soldier" %><br />
+                  <%= form.check_box :soldier %></div>
+                <br />
+                <div><%= form.label :heavy, "Heavy" %><br />
+                  <%= form.check_box :heavy %></div>
+                <br />
+                <div><%= form.label :sniper, "Sniper" %><br />
+                  <%= form.check_box :sniper %></div>
+                <br />
+              </div>
+	            <div class="col-md-3">
+                <div><%= form.label :pyro, "Pyro" %><br />
+                  <%= form.check_box :pyro %></div>
+                <br />
+                <div><%= form.label :engineer, "Engineer" %><br />
+                  <%= form.check_box :engineer %></div>
+                <br />
+                <div><%= form.label :spy, "Spy" %><br />
+                  <%= form.check_box :spy %></div>
+                <br />
+              </div>
+	            <div class="col-md-3">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
 
-  <%# TODO: add char count %>
-  <div><%= form.label :notes, "Extra notes or comments" %><br />
-    <%= form.text_area :notes, cols: 70, rows: 10 %></div>
-
-  <div><%= form.label :location, "*Location" %><br />
-    <%= form.select :location, options_for_select(["NA", "EU"]) %></div>
-
-  <p>Mark at least one:</p>
-  <div><%= form.label :scout, "Scout" %><br />
-    <%= form.check_box :scout %></div>
-  <div><%= form.label :soldier, "Soldier" %><br />
-    <%= form.check_box :soldier %></div>
-  <div><%= form.label :pyro, "Pyro" %><br />
-    <%= form.check_box :pyro %></div>
-  <div><%= form.label :demoman, "Demoman" %><br />
-    <%= form.check_box :demoman %></div>
-  <div><%= form.label :heavy, "Heavy" %><br />
-    <%= form.check_box :heavy %></div>
-  <div><%= form.label :engineer, "Engineer" %><br />
-    <%= form.check_box :engineer %></div>
-  <div><%= form.label :medic, "Medic" %><br />
-    <%= form.check_box :medic %></div>
-  <div><%= form.label :sniper, "Sniper" %><br />
-    <%= form.check_box :sniper %></div>
-  <div><%= form.label :spy, "Spy" %><br />
-    <%= form.check_box :spy %></div>
-
-  <%= form.submit "Submit player listing" %>
+  <div class="text-center">
+    <%= form.submit "submit player listing", :class => "btn-lg btn-special" %>
+  </div>
 <% end %>

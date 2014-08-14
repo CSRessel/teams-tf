@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if current_user == @user
+      @owner = true
       @players = @user.players
       @teams = @user.teams
     end
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      flash[:success] = 'Profile updated'
+      flash[:success] = 'profile updated'
       redirect_to @user
     else
       render 'edit'
@@ -28,7 +29,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     log_off
     @user.destroy
-    flash[:success] = 'Profile deleted'
+    flash[:success] = 'profile deleted'
     redirect_to goodbye_path
   end
 
@@ -41,13 +42,12 @@ class UsersController < ApplicationController
     def require_sign_in
       if !signed_in?
         store_location
-        flash[:error] = 'Sign in required'
         redirect_to denied_path
       end
     end
 
     def require_ownership
-      if current_user.id != params[:id]
+      if current_user != User.find(params[:id])
         flash[:error] = 'You cannot modify this'
         redirect_to user_path(User.find(params[:id]))
       end

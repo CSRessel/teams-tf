@@ -1,17 +1,48 @@
-<h1>Players#show</h1>
 <br />
-<%= link_to User.find(@player.user_id).nick, user_path(User.find(@player.user_id)) %> | <%= @player.game_type %> | <%= @player.league_level %> | <%= @player.location %>
-<p>Scout:     <%= @player.scout    %></p>
-<p>Soldier:   <%= @player.soldier  %></p>
-<p>Pyro:      <%= @player.pyro     %></p>
-<p>Demoman:   <%= @player.demoman  %></p>
-<p>Heavy:     <%= @player.heavy    %></p>
-<p>Engineer:  <%= @player.engineer %></p>
-<p>Medic:     <%= @player.medic    %></p>
-<p>Sniper:    <%= @player.sniper   %></p>
-<p>Spy:       <%= @player.spy      %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1 class="text-right">
+        <%= link_to User.find(@player.user_id).nick, user_path(User.find(@player.user_id)) %><br />
+      </h1>
+    </div>
+    <div class="col-md-6">
+      <br />
+      <p class="text-left">
+      Game ................... <%= @player.game_type %><br />
+      League and level ... <%= @player.league_level %><br />
+      Location ................ <%= @player.location %><br />
+      </p>
+    </div>
+  </div>
+</div>
 <hr />
-<h3>Reviews</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-2">
+      <p class="text-right">Scout:   <%= @player.scout    %></p>
+      <p class="text-right">Demoman: <%= @player.demoman  %></p>
+      <p class="text-right">Medic:   <%= @player.medic    %></p>
+    </div>
+    <div class="col-md-2">
+      <p class="text-right">Soldier:   <%= @player.soldier  %></p>
+      <p class="text-right">Heavy:     <%= @player.heavy    %></p>
+      <p class="text-right">Sniper:    <%= @player.sniper   %></p>
+    </div>
+    <div class="col-md-2">
+      <p class="text-right">Pyro:      <%= @player.pyro     %></p>
+      <p class="text-right">Engineer:  <%= @player.engineer %></p>
+      <p class="text-right">Spy:       <%= @player.spy      %></p>
+    </div>
+    <div class="col-md-3">
+    </div>
+  </div>
+</div>
 <hr />
+<br />
+<h2>Reviews</h2>
+<br />
 <%= render @reviews %>
-<%= link_to "New review", new_review_path(@player) %>
+<%= link_to "write review", new_review_path, :class => "btn btn-special" %>

@@ -2,7 +2,7 @@ class Team < ActiveRecord::Base
   belongs_to :user
 
   validates :name,          presence: true, uniqueness: true
-  validates :game_type,     presence: true, inclusion: { in: %w(6v6 highlander) }
+  validates :game_type,     presence: true, inclusion: { in: %w(6v6 Highlander) }
   #validates :league,       presence: true, inclusion: { in: %w(UGC ESEA ETF2L) }
   #validates :league,       presence: true, inclusion: { in: %w(ESEA ETF2L) },                       if: :is_6v6?
   #validates :level,        presence: true, inclusion: { in: %w(iron steel silver gold platinum) },  if: :is_UGC?

@@ -4,8 +4,8 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
-    # TODO: Fix this not being assigned
-    @review.player_id = params[:id]
+    @review.player_id = session[:player_id]
+    session.delete(:player_id)
   end
 
   def create
@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
       flash[:success] = 'Review posted'
       redirect_to player_path(Player.find(@review.player_id))
     else
-      flash[:error] = 'Unable to post review'
+      flash[:error] = 'unable to post review'
       render 'new'
     end
   end
@@ -27,7 +27,7 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     if @review.update_attributes(review_params)
-      flash[:success] = 'Review updated'
+      flash[:success] = 'review updated'
       redirect_to Player.find(@review.player_id)
     else
       render 'edit'
@@ -38,10 +38,10 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @player = Player.find(@review.player_id)
     if @review.destroy
-      flash[:success] = 'Review deleted'
+      flash[:success] = 'review deleted'
       redirect_to player_path(@player)
     else
-      flash[:error] = 'Unable to delete review'
+      flash[:error] = 'unable to delete review'
       redirect_to player_path(@player)
     end
   end
@@ -55,14 +55,13 @@ class ReviewsController < ApplicationController
     def require_sign_in
       if !signed_in?
         store_location
-        flash[:error] = 'Sign in required'
         redirect_to denied_path
       end
     end
 
     def require_ownership
       if current_user.id != Review.find(params[:id]).user_id
-        flash[:error] = 'You cannot modify this'
+        flash[:error] = 'you cannot modify this'
         redirect_to player_path(Player.find(Review.find(params[:id]).player_id))
       end
     end

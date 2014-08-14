@@ -1,10 +1,10 @@
 class Player < ActiveRecord::Base
-  before_destroy :delete_reviews
+  before_destroy :destroy_reviews
 
   belongs_to :user
   has_many :reviews
 
-  validates :game_type,     presence: true, inclusion: { in: %w(6v6 highlander) }
+  validates :game_type,     presence: true, inclusion: { in: %w(6v6 Highlander) }
   #validates :league,       presence: true, inclusion: { in: %w(UGC) },                              if: :is_highlander?
   #validates :league,       presence: true, inclusion: { in: %w(ESEA ETF2L) },                       if: :is_6v6?
   #validates :level,        presence: true, inclusion: { in: %w(iron steel silver gold platinum) },  if: :is_UGC?
@@ -43,6 +43,8 @@ class Player < ActiveRecord::Base
   private
 
     def destroy_reviews
-      self.reviews.destroy_all
+      self.reviews.each do |r|
+        r.destroy
+      end
     end
 end

@@ -17,7 +17,7 @@
 @user5 = User.create!(uid: "5234", nick: "eric", steam_url: "bluh", avatar: "http://www.alluserpics.com/data/thumbnails/14/christmas_cat.gif")
 @user5.save!
 
-@player1 = Player.create!(game_type: "highlander", league_level: "UGC Steel", location: "NA", notes: "i b super pro shpee", user_id: 3, spy: true)
+@player1 = Player.create!(game_type: "Highlander", league_level: "UGC Steel", location: "NA", notes: "i b super pro shpee", user_id: 3, spy: true)
 @player1.save!
 @player2 = Player.create!(game_type: "6v6", league_level: "ESEA Invite", location: "NA", user_id: 1, soldier: true, scout: true, sniper: true)
 @player2.save!
@@ -27,7 +27,7 @@
 @review2 = Review.create!(body: "True pro, pick him up quick", user_id: 3, player_id: 2)
 @review2.save!
 
-@team1 = Team.create!(name: "bballerz", tag: ">bb<", game_type: "highlander", league_level: "UGC Steel", location: "NA", user_id: 5, spy: true)
+@team1 = Team.create!(name: "bballerz", tag: ">bb<", game_type: "Highlander", league_level: "UGC Steel", location: "NA", user_id: 5, spy: true)
 @team1.save!
 @team2 = Team.create!(name: "goingHAM", tag: "H4M", game_type: "6v6", league_level: "ETF2L Div5", location: "EU", user_id: 2, scout: true, demoman: true)
 @team2.save!

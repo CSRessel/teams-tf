@@ -1,23 +1,58 @@
-<h1>Users#show</h1>
-<%= link_to image_tag(@user.avatar) %><br />
-<%= @user.nick %><br />
-<%= link_to "Steam profile", @user.steam_url %><br />
-<%= @user.location.nil? ? "" : @user.location %><br />
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <%# TODO: test this image size is working %>
+    <div class="col-md-2 propic">
+      <%= image_tag(@user.avatar) %><br />
+    </div>
+    <div class="col-md-7">
+      <h1><%= @user.nick %></h1>
+      <h3><%= link_to "Steam profile", @user.steam_url %></h3>
+      <% if @user.location %>
+        <h3><%= @user.location %></h3>
+      <% end %>
+    </div>
+  </div>
+</div>
 <hr />
-<%= link_to "Edit your profile", edit_user_path(@user) %>
-<% if @players.size > 0 %>
-  <h3>Your player listings</h3>
-  <% @players.each do |p| %>
-    <hr />
-    <%= link_to p.league_level, player_path(p) %>
-  <% end %>
-  <hr />
-<% end %>
-<% if @teams.size > 0 %>
-  <h3>Your team listings</h3>
-  <% @teams.each do |t| %>
-    <hr />
-    <%= link_to t.league_level, team_path(t) %>
-  <% end %>
-  <hr />
+<% if @owner %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 text-right">
+        <h2>your player listings</h2>
+        <hr />
+        <% if @players and !@players.empty? %>
+          <% @players.each do |p| %>
+            <h4><%= link_to p.league_level, player_path(p) %></h4>
+          <% end %>
+        <% else %>
+          <% if @teams and @teams.empty? %>
+            <h4>You currently have no player listings.</h4>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-md-6">
+        <h2>your team listings</h2>
+        <hr />
+        <% if @teams and !@teams.empty? %>
+          <% @teams.each do |t| %>
+            <%= link_to t.league_level, team_path(t) %>
+          <% end %>
+        <% else %>
+          <% if @teams and @teams.empty? %>
+            <h4>You currently have no team listings.</h4>
+          <% end %>
+        <% end %>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <br />
+        <br />
+        <br />
+        <%= link_to "edit your profile", edit_user_path(@user), :class => "btn-lg btn-special" %>
+      </div>
+    </div>
+  </div>
 <% end %>

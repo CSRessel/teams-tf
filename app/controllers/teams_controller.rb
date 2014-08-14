@@ -10,7 +10,7 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     @team.user_id = current_user.id
     if @team.save
-      flash[:success] = 'Team listing created'
+      flash[:success] = 'team listing created'
       redirect_to teams_path
     else
       render 'new'
@@ -28,7 +28,7 @@ class TeamsController < ApplicationController
   def update
     @team = Team.find(params[:id])
     if @team.update_attributes(team_params)
-      flash[:success] = 'Team listing updated'
+      flash[:success] = 'team listing updated'
       redirect_to @team
     else
       render 'edit'
@@ -36,16 +36,20 @@ class TeamsController < ApplicationController
   end
 
   def index
-    # TODO: use ransack for searching
-    #@search = Players.search(params[:q])
-    #@players = @search.result(distinct: true).paginate(:page => params[:page], :per_page => 15)
-    @teams = Team.all
+    @search = Team.search(params[:q])
+    @teams = @search.result(distinct: true).paginate(:page => params[:page], :per_page => 15)
+    #@teams = Team.all
+  end
+
+  def search
+    index
+    render 'index'
   end
 
   def destroy
     @team = Team.find(params[:id])
     if @team.destroy
-      flash[:success] = 'Team listing deleted'
+      flash[:success] = 'team listing deleted'
       redirect_to teams_path
     else
       flash[:error] = 'Unable to delete team listing'
@@ -62,14 +66,13 @@ class TeamsController < ApplicationController
     def require_sign_in
       if !signed_in?
         store_location
-        flash[:error] = 'Sign in required'
         redirect_to denied_path
       end
     end
 
     def require_ownership
       if current_user.id != Team.find(params[:id]).user_id
-        flash[:error] = 'You cannot modify this'
+        flash[:error] = 'you cannot modify this'
         redirect_to team_path(Team.find(params[:id]))
       end
     end

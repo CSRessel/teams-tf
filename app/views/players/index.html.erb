@@ -1,3 +1,90 @@
-<h1>Players#index</h1>
-<br />
-<%= render @players %>
+<h1 class="text-center">player listings</h1>
+<hr />
+<div class="container">
+  <div class="row my-forms">
+    <div class="col-md-3">
+      <h2 class="text-right"><i class="glyphicon glyphicon-search"></i>  search</h2><br />
+      <hr />
+      <%= search_form_for @search, url: search_players_path, html: { method: :post, class: "form-inline" } do |f| %>
+        <p class="text-right">
+          <%= f.label :league_level_start, "League:" %>
+          <%= f.select :league_level_start, options_for_select(%w[UGC ESEA ETF2L]), :include_blank => true %>
+        </p><br />
+        <p class="text-right">
+          <%= f.label :league_level_end, "Level:" %>
+          <%= f.select :league_level_end, options_for_select(%w[Iron Steel Silver Gold Platinum Open Invite Div6 Div5 Div4 Div3 Div2 Div1]), :include_blank => true %>
+        </p><br />
+        <hr />
+        <div class="row">
+          <div class="col-md-6">
+            <div class="text-right">Scout -
+              <%= f.check_box :scout_true %><br /></div>
+            <div class="text-right">Pyro -
+              <%= f.check_box :pyro_true %><br /></div>
+            <div class="text-right">Heavy -
+              <%= f.check_box :heavy_true %><br /></div>
+            <div class="text-right"> Medic -
+              <%= f.check_box :medic_true %></div>
+            <div class="text-right">Spy -
+              <%= f.check_box :spy_true %><br /></div>
+          </div>
+          <div class="col-md-6">
+            <div class="text-right">Soldier -
+              <%= f.check_box :soldier_true %><br /></div>
+            <div class="text-right">Demoman -
+              <%= f.check_box :demoman_true %><br /></div>
+            <div class="text-right">Engineer -
+              <%= f.check_box :engineer_true %><br /></div>
+            <div class="text-right">Sniper -
+              <%= f.check_box :sniper_true %><br /></div>
+          </div>
+        </div>
+        <hr />
+        <p class="text-right">
+          <%= f.submit "apply filters", :class => "btn-lg btn-special" %>
+        </p>
+      <% end %>
+    </div>
+    <div class="col-md-9">
+      <br />
+      <% if @players.empty? %>
+        <h2>No players found.</h2>
+      <% else %>
+        <div style="text-align: center;">
+          <%= will_paginate @players %>
+        </div>
+        <table id="players" width="100%">
+          <tr>
+            <th class="my-table-heading">Name</th>
+	          <th><%= sort_link @search, :league_level, "League and level" %></th>
+	          <th><%= sort_link @search, :scout, "Scout" %></th>
+	          <th><%= sort_link @search, :soldier, "Soldier" %></th>
+	          <th><%= sort_link @search, :pyro, "Pyro" %></th>
+	          <th><%= sort_link @search, :demoman, "Demoman" %></th>
+	          <th><%= sort_link @search, :heavy, "Heavy" %></th>
+	          <th><%= sort_link @search, :engineer, "Engineer" %></th>
+	          <th><%= sort_link @search, :medic, "Medic" %></th>
+	          <th><%= sort_link @search, :sniper, "Sniper" %></th>
+	          <th><%= sort_link @search, :spy, "Spy" %></th>
+          </tr>
+          <% @players.each do |player| %>
+            <%# TODO: have whole tr link to player %>
+            <tr class="my-table-entry">
+	            <td><%= link_to User.find(player.user_id).nick, player %></td>
+              <td><%= player.league_level %></td>
+              <td><%= player.scout %></td>
+              <td><%= player.soldier %></td>
+              <td><%= player.pyro %></td>
+              <td><%= player.demoman %></td>
+              <td><%= player.heavy %></td>
+              <td><%= player.engineer %></td>
+              <td><%= player.medic %></td>
+              <td><%= player.sniper %></td>
+              <td><%= player.spy %></td>
+            </tr>
+          <% end %>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

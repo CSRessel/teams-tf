@@ -1,2 +1,4 @@
-<%= link_to "LFP", lfp_path %><br />
-<%= link_to "LFT", lft_path %><br />
+<h1 class="text-center" >teams.tf</h1>
+<hr />
+<p class="text-center">Helping members of the competitive TF2 community find <%= link_to "players", lfp_path %> or <%= link_to "teams", lft_path %>.<br />We currently have: <%= pluralize(Team.count, 'listing') %> for teams, <%= pluralize(Player.count, 'listing') %> for players.</p>
+<p class="text-center"> Start browsing now.</p>

@@ -1,7 +1,12 @@
-<b><%= User.find(review.user_id).nick %></b>
-<p><%= review.body %></p>
-<% if current_user.id == review.user_id %>
-  <%= link_to "Edit", edit_review_path(review) %>
-  <%= link_to "Delete", review_path(review), :method => :delete %>
-<% end %>
-<hr />
+<div class="well well-sm">
+  <b><%= link_to User.find(review.user_id).nick, User.find(review.user_id) %></b>
+  <br />
+  <br />
+  <%= review.body %>
+  <br />
+  <br />
+  <% if current_user.id == review.user_id %>
+    <%= link_to raw('<i class="glyphicon glyphicon-pencil"></i>'), edit_review_path(review), :class => "btn-sm btn-special" %> <%= link_to raw('<i class="glyphicon glyphicon-trash"></i>'), review_path(review), :method => :delete, :class => "btn-sm btn-special" %>
+  <% end %>
+</div>
+<br />

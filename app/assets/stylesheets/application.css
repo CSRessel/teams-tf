@@ -13,3 +13,157 @@
  *= require_tree .
  *= require_self
  */
+
+
+/* the navbar */
+/*-----------------------------------------------------------*/
+
+div.navbar {
+  background-color: #303030;
+}
+
+img.signed-in {
+  width: 48px;
+  height: 48px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+img.sign-in {
+  width: 118px;
+  height: 51px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+img.propic {
+  width: 200px;
+  height: 200px;
+}
+
+li#user-account-settings-dropdown {
+  margin-right: 15px;
+}
+
+.navbar .navbar-center {
+  display: inline-block;
+  float: none;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+.navbar .add-space {
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+/* highlight button */
+/*-----------------------------------------------------------*/
+
+a.btn-special {
+  color: #ffffff !important;
+  background-color: #ff8000;
+}
+
+a.btn-special:focus,
+a.btn-special:hover {
+  color: #ffffff !important;
+  background-color: #d97511 !important;
+}
+
+input.btn-special {
+  color: #ffffff !important;
+  background-color: #ff8000;
+}
+
+input.btn-special:focus,
+input.btn-special:hover {
+  color: #ffffff !important;
+  background-color: #d97511 !important;
+}
+
+a.white-link {
+  color: #ffffff !important;
+}
+
+/* footer */
+/*-----------------------------------------------------------*/
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  padding-bottom: 70px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 100px;
+  background-color: #1c1c1c;
+}
+
+
+/* random */
+/*-----------------------------------------------------------*/
+
+div.jumbotron a {
+  color: #ff8000;
+}
+
+div.my-forms select {
+  color: #1c1c1c;
+}
+
+
+/* table stuff */
+/*-----------------------------------------------------------*/
+
+th.my-table-heading {
+  color: #ff8000 !important;
+  text-decoration: underline;
+}
+
+/*th.my-table-heading:focus,*/
+/*th.my-table-heading:hover {*/
+  /*color: #d97511 !important;*/
+/*}*/
+
+tr.my-table-entry a {
+  color: #ffffff;
+}
+
+tr.my-table-entry a:focus,
+tr.my-table-entry a:hover {
+  color: #0ce3a5;
+}
+
+td,th {
+  padding-left:7px;
+  padding-right:7px;
+  padding-top:3px;
+  padding-bottom:3px;
+}
+
+table#players tr:hover {
+  background-color: #292929;
+}
+
+table,tr {
+  border-bottom: 1px solid #B0B0B0;
+}
+

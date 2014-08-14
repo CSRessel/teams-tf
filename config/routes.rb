@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'goodbye',  to: 'static#goodbye'
   get 'lfp',      to: 'static#lfp'
   get 'lft',      to: 'static#lft'
+  # TODO: delete this when back online
+  get 'login',    to: 'static#tmp_login', as: 'login'
 
   # authentication
   post 'auth/steam/callback' => 'auth#auth_callback'
@@ -17,18 +19,30 @@ Rails.application.routes.draw do
   resources :users
 
   # review paths
-  #resources :reviews
-  match 'players/:id/review', to: 'reviews#new',      via: [:get],          as: 'new_review'
-  match 'reviews',            to: 'reviews#create',   via: [:post],         as: 'reviews'
-  match 'reviews/:id',        to: 'reviews#update',   via: [:put, :patch]
-  match 'reviews/:id',        to: 'reviews#destroy',  via: [:delete]
-  match 'reviews/:id/edit',   to: 'reviews#edit',     via: [:get],          as: 'edit_review'
+  resources :reviews
+  #match 'players/:id/review', to: 'reviews#new',      via: [:get],          as: 'new_review'
+  #match 'reviews',            to: 'reviews#create',   via: [:post],         as: 'reviews'
+  #match 'reviews/:id',        to: 'reviews#update',   via: [:put, :patch]
+  #match 'reviews/:id',        to: 'reviews#destroy',  via: [:delete]
+  #match 'reviews/:id/edit',   to: 'reviews#edit',     via: [:get],          as: 'edit_review'
 
   # player paths
   resources :players
+  # for ransack's search path
+  resources :players do
+    collection do
+      match 'search' => 'players#search', via: [:get, :post], as: :search
+    end
+  end
 
   # team paths
   resources :teams
+  # for ransack's search path
+  resources :teams do
+    collection do
+      match 'search' => 'teams#search', via: [:get, :post], as: :search
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

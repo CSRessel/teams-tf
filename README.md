@@ -20,3 +20,14 @@ Dates
 -----
 
 Project began on Sunday, August 10th, 2014
+
+
+TODO
+----
+
+Things left:
+- Test pagination w/ comprehensive seed data
+- Add char counting (gem?)
+- Have entire tr link to show action for indexes
+- Replace mess of checkboxes w/ bar of icons
+- Fix new review bug

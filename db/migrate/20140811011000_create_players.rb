@@ -1,7 +1,7 @@
 class CreatePlayers < ActiveRecord::Migration
   def change
     create_table :players do |t|
-      t.string :game_type,    null:false  # 6v6 or highlander
+      t.string :game_type,    null:false  # 6v6 or Highlander
       t.string :league_level, null:false  # UGC: iron, steel, silver, gold, platinum; ESEA: open, invite; ETF2L: div6, div5,... div1
       t.string :notes                     # additional comments by creator
       t.string :location,     null:false  # NA or EU
