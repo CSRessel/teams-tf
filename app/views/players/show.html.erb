@@ -2,6 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-5">
+      <br />
       <h1 class="text-right">
         <%= link_to User.find(@player.user_id).nick, user_path(User.find(@player.user_id)) %><br />
       </h1>
@@ -9,18 +10,20 @@
     <div class="col-md-1">
     </div>
     <div class="col-md-6">
-      <br />
-      <p class="text-left">
-      Game ................... <%= @player.game_type %><br />
-      League and level ... <%= @player.league_level %><br />
-      Location ................ <%= @player.location %><br />
-      </p>
+      <div class="well well-lg">
+        <br />
+        <p class="text-left">
+        Game ................... <%= @player.game_type %><br />
+        League and level ... <%= @player.league_level %><br />
+        Location ................ <%= @player.location %><br />
+        </p>
+      </div>
     </div>
   </div>
 </div>
 <hr />
 <div class="container">
-  <div class="row">
+  <div class="row well well-lg">
     <div class="col-md-3">
     </div>
     <div class="col-md-2">

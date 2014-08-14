@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20140812012459) do
     t.string   "nick",           null: false
     t.string   "steam_url",      null: false
     t.string   "avatar",         null: false
+    t.string   "avatar_full",    null: false
     t.string   "location"
     t.string   "timezone"
     t.datetime "created_at"

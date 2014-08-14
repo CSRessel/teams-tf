@@ -6,15 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-@user1 = User.create!(uid: "1234", nick: "allen", steam_url: "blah", avatar: "http://www.alluserpics.com/data/thumbnails/14/christmas_cat.gif")
+@user1 = User.create!(uid: "1234", nick: "allen", steam_url: "blah", avatar: "http://www.alluserpics.com/data/thumbnails/14/christmas_cat.gif", avatar_full: "http://media.steampowered.com/steamcommunity/public/images/avatars/94/9429f42bd935753f86fa6195977c44b3b4e8201e_full.jpg")
 @user1.save!
-@user2 = User.create!(uid: "2234", nick: "bob", steam_url: "bleh", avatar: "http://www.alluserpics.com/data/thumbnails/14/christmas_cat.gif")
+@user2 = User.create!(uid: "2234", nick: "bob", steam_url: "bleh", avatar: "http://www.alluserpics.com/data/thumbnails/14/christmas_cat.gif", avatar_full: "http://media.steampowered.com/steamcommunity/public/images/avatars/94/9429f42bd935753f86fa6195977c44b3b4e8201e_full.jpg")
 @user2.save!
-@user3 = User.create!(uid: "3234", nick: "cliff", steam_url: "blih", avatar: "http://www.alluserpics.com/data/thumbnails/14/christmas_cat.gif")
+@user3 = User.create!(uid: "3234", nick: "cliff", steam_url: "blih", avatar: "http://www.alluserpics.com/data/thumbnails/14/christmas_cat.gif", avatar_full: "http://media.steampowered.com/steamcommunity/public/images/avatars/94/9429f42bd935753f86fa6195977c44b3b4e8201e_full.jpg")
 @user3.save!
-@user4 = User.create!(uid: "4234", nick: "dave", steam_url: "bloh", avatar: "http://www.alluserpics.com/data/thumbnails/14/christmas_cat.gif")
+@user4 = User.create!(uid: "4234", nick: "dave", steam_url: "bloh", avatar: "http://www.alluserpics.com/data/thumbnails/14/christmas_cat.gif", avatar_full: "http://media.steampowered.com/steamcommunity/public/images/avatars/94/9429f42bd935753f86fa6195977c44b3b4e8201e_full.jpg")
 @user4.save!
-@user5 = User.create!(uid: "5234", nick: "eric", steam_url: "bluh", avatar: "http://www.alluserpics.com/data/thumbnails/14/christmas_cat.gif")
+@user5 = User.create!(uid: "5234", nick: "eric", steam_url: "bluh", avatar: "http://www.alluserpics.com/data/thumbnails/14/christmas_cat.gif", avatar_full: "http://media.steampowered.com/steamcommunity/public/images/avatars/94/9429f42bd935753f86fa6195977c44b3b4e8201e_full.jpg")
 @user5.save!
 
 @player1 = Player.create!(game_type: "Highlander", league_level: "UGC Steel", location: "NA", notes: "i b super pro shpee", user_id: 3, spy: true)

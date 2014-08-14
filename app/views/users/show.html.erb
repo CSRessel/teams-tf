@@ -1,12 +1,15 @@
+<hr />
+<br />
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
     </div>
-    <%# TODO: test this image size is working %>
     <div class="col-md-2 propic">
-      <%= image_tag(@user.avatar) %><br />
+      <%= image_tag(@user.avatar_full) %><br />
     </div>
-    <div class="col-md-7">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-7 well well-lg">
       <h1><%= @user.nick %></h1>
       <h3><%= link_to "Steam profile", @user.steam_url %></h3>
       <% if @user.location %>
@@ -19,7 +22,7 @@
 <% if @owner %>
   <div class="container">
     <div class="row">
-      <div class="col-md-6 text-right">
+      <div class="col-md-5 text-right well">
         <h2>your player listings</h2>
         <hr />
         <% if @players and !@players.empty? %>
@@ -32,7 +35,13 @@
           <% end %>
         <% end %>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-2 text-center">
+        <br />
+        <br />
+        <br />
+        <%= link_to "edit your profile", edit_user_path(@user), :class => "text-center btn btn-special" %>
+      </div>
+      <div class="col-md-5 well">
         <h2>your team listings</h2>
         <hr />
         <% if @teams and !@teams.empty? %>
@@ -44,15 +53,6 @@
             <h4>You currently have no team listings.</h4>
           <% end %>
         <% end %>
-    </div>
-    <br />
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <br />
-        <br />
-        <br />
-        <%= link_to "edit your profile", edit_user_path(@user), :class => "btn-lg btn-special" %>
-      </div>
     </div>
   </div>
 <% end %>

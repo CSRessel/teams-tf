@@ -6,10 +6,11 @@ class User < ActiveRecord::Base
   has_many :players
   has_many :reviews
 
-  validates :uid,       presence: true, uniqueness: true
-  validates :nick,      presence: true
-  validates :steam_url, presence: true, uniqueness: true
-  validates :avatar,    presence: true
+  validates :uid,         presence: true, uniqueness: true
+  validates :nick,        presence: true
+  validates :steam_url,   presence: true, uniqueness: true
+  validates :avatar,      presence: true
+  validates :avatar_full, presence: true
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64

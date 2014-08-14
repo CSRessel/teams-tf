@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   get 'login',    to: 'static#tmp_login', as: 'login'
 
   # authentication
-  post 'auth/steam/callback' => 'auth#auth_callback'
-  get 'sign_out' => 'auth#sign_out'
+  post 'auth/steam/callback' => 'auth#auth_callback', as: 'sign_in'
+  get 'sign_out' => 'auth#sign_out', as: 'sign_out'
 
   # user paths
   resources :users

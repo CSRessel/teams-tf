@@ -1,12 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-md-5">
+      <br />
       <h1 class="text-right"><%= @team.name %></h1>
       <h2 class="text-right"><%= @team.tag %></h2>
     </div>
     <div class="col-md-1">
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 well well-lg">
       <br />
       <p class="text-left">
       Leader .................. <%= link_to User.find(@team.user_id).nick, User.find(@team.user_id) %><br />
@@ -19,7 +20,7 @@
 </div>
 <hr />
 <div class="container">
-  <div class="row">
+  <div class="row well well-lg">
     <div class="col-md-3">
     </div>
     <div class="col-md-2">

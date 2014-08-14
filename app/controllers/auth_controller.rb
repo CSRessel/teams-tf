@@ -15,7 +15,7 @@ class AuthController < ApplicationController
       flash[:success] = 'signed in'
       redirect_back_or(root_path)
     else
-      new_user = User.new(uid: auth.uid, nick: auth.info['nickname'], steam_url: auth.info['urls']['Profile'], avatar: auth.info['image'])
+      new_user = User.new(uid: auth.uid, nick: auth.info['nickname'], steam_url: auth.info['urls']['Profile'], avatar: auth.info['image'], avatar_full: auth.extra[:raw_info][:avatarfull])
       if new_user.save
         sign_in new_user
         flash[:success] = 'signed in'
