@@ -40,8 +40,7 @@ class PlayersController < ApplicationController
 
   def index
     @search = Player.search(params[:q])
-    @players = @search.result(distinct: true).paginate(:page => params[:page], :per_page => 15)
-    #@players = Player.all
+    @players = @search.result(distinct: true).paginate(:page => params[:page], :per_page => 12)
   end
 
   def search

@@ -31,3 +31,5 @@ Things left:
 - Have entire tr link to show action for indexes
 - Replace mess of checkboxes w/ bar of icons
 - Fix new review bug
+- Update content of About and Contact pages
+- Add edit and delete buttons to listings (both in their show and user show)

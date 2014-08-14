@@ -37,8 +37,7 @@ class TeamsController < ApplicationController
 
   def index
     @search = Team.search(params[:q])
-    @teams = @search.result(distinct: true).paginate(:page => params[:page], :per_page => 15)
-    #@teams = Team.all
+    @teams = @search.result(distinct: true).paginate(:page => params[:page], :per_page => 12)
   end
 
   def search
