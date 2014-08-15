@@ -53,9 +53,9 @@
         <div style="text-align: center;">
           <%= will_paginate @teams %>
         </div>
-        <table id="players" width="100%">
+        <table class="my-table" width="100%">
           <tr>
-            <th><%= sort_link @search, :name, "Team" %></th>
+            <th class="my-table-heading"><%= "Team" %></th>
 	          <th><%= sort_link @search, :league_level, "League and level" %></th>
 	          <th><%= sort_link @search, :scout, "Scout" %></th>
 	          <th><%= sort_link @search, :soldier, "Soldier" %></th>
@@ -70,16 +70,16 @@
           <% @teams.each do |team| %>
             <tr class="my-table-entry">
 	            <td><%= link_to team.name, team %></td>
-              <td><%= team.league_level %></td>
-              <td><%= team.scout %></td>
-              <td><%= team.soldier %></td>
-              <td><%= team.pyro %></td>
-              <td><%= team.demoman %></td>
-              <td><%= team.heavy %></td>
-              <td><%= team.engineer %></td>
-              <td><%= team.medic %></td>
-              <td><%= team.sniper %></td>
-              <td><%= team.spy %></td>
+              <td><%= link_to team.league_level, team %></td>
+              <td><%= link_to team.scout ? "true" : "false", team %></td>
+              <td><%= link_to team.soldier ? "true" : "false", team %></td>
+              <td><%= link_to team.pyro ? "true" : "false", team %></td>
+              <td><%= link_to team.demoman ? "true" : "false", team %></td>
+              <td><%= link_to team.heavy ? "true" : "false", team %></td>
+              <td><%= link_to team.engineer ? "true" : "false", team %></td>
+              <td><%= link_to team.medic ? "true" : "false", team %></td>
+              <td><%= link_to team.sniper ? "true" : "false", team %></td>
+              <td><%= link_to team.spy ? "true" : "false", team %></td>
             </tr>
           <% end %>
         </table>

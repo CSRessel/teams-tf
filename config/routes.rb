@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   get 'login',    to: 'static#tmp_login', as: 'login'
 
   # authentication
-  post 'auth/steam/callback' => 'auth#auth_callback', as: 'sign_in'
+  get 'auth/steam', as: 'sign_in'
+  post 'auth/steam/callback' => 'auth#auth_callback'
   get 'sign_out' => 'auth#sign_out', as: 'sign_out'
 
   # user paths
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
   # review paths
   resources :reviews
   #match 'players/:id/review', to: 'reviews#new',      via: [:get],          as: 'new_review'
-  #match 'reviews',            to: 'reviews#create',   via: [:post],         as: 'reviews'
+  #match 'reviews',            to: 'reviews#create',   via: [:post],         as: 'review'
   #match 'reviews/:id',        to: 'reviews#update',   via: [:put, :patch]
   #match 'reviews/:id',        to: 'reviews#destroy',  via: [:delete]
   #match 'reviews/:id/edit',   to: 'reviews#edit',     via: [:get],          as: 'edit_review'

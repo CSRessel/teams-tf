@@ -2,12 +2,6 @@ class ReviewsController < ApplicationController
   before_filter :require_sign_in, only:[:create, :edit, :update, :destroy]
   before_filter :require_ownership, only:[:edit, :update, :destroy]
 
-  def new
-    @review = Review.new
-    @review.player_id = session[:player_id]
-    session.delete(:player_id)
-  end
-
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
@@ -16,7 +10,8 @@ class ReviewsController < ApplicationController
       redirect_to player_path(Player.find(@review.player_id))
     else
       flash[:error] = 'unable to post review'
-      render 'new'
+      #render 'new'
+      redirect_to player_path(Player.find(@review.player_id))
     end
   end
 
@@ -49,7 +44,7 @@ class ReviewsController < ApplicationController
   private
 
     def review_params
-      params.require(:review).permit(:body, :player_id)
+      params.require(:review).permit(:player_id, :body)
     end
 
     def require_sign_in

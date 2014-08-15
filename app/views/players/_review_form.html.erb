@@ -1,0 +1,9 @@
+<%= form_for(@review) do |form| %>
+  <div class="text-center">
+    <%# TODO: add char count %>
+    <div><%= form.label :body, "Review text (140 characters)" %><br />
+      <%= form.text_area :body, cols: 70, rows: 10 %></div>
+    <br />
+    <%= form.submit "post review", :class => "btn-lg btn-special" %>
+  </div>
+<% end %>

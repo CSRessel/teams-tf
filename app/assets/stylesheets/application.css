@@ -135,21 +135,18 @@ div.my-forms select {
 
 th.my-table-heading {
   color: #ff8000 !important;
-  text-decoration: underline;
 }
-
-/*th.my-table-heading:focus,*/
-/*th.my-table-heading:hover {*/
-  /*color: #d97511 !important;*/
-/*}*/
 
 tr.my-table-entry a {
   color: #ffffff;
+  display: block;
+  text-decoration: none !important;
 }
 
 tr.my-table-entry a:focus,
 tr.my-table-entry a:hover {
-  color: #0ce3a5;
+  text-decoration: none !important;
+  color: #ffffff !important;
 }
 
 td,th {
@@ -159,11 +156,10 @@ td,th {
   padding-bottom:3px;
 }
 
-table#players tr:hover {
+table.my-table tr:hover {
   background-color: #292929;
 }
 
 table,tr {
   border-bottom: 1px solid #B0B0B0;
 }
-

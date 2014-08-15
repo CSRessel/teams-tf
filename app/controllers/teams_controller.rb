@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   before_filter :require_sign_in, only:[:new, :create, :show, :edit, :update, :destroy]
-  before_filter :require_ownership, only:[:destroy]
+  before_filter :require_ownership, only:[:edit, :update, :destroy]
 
   def new
     @team = Team.new
@@ -11,7 +11,7 @@ class TeamsController < ApplicationController
     @team.user_id = current_user.id
     if @team.save
       flash[:success] = 'team listing created'
-      redirect_to teams_path
+      redirect_to team_path(@team)
     else
       render 'new'
     end

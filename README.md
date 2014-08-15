@@ -26,10 +26,7 @@ TODO
 ----
 
 Things left:
-- Test pagination w/ comprehensive seed data
 - Add char counting (gem?)
-- Have entire tr link to show action for indexes
+- Make the pagination stuff look like online
 - Replace mess of checkboxes w/ bar of icons
-- Fix new review bug
 - Update content of About and Contact pages
-- Add edit and delete buttons to listings (both in their show and user show)

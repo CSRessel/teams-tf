@@ -61,8 +61,6 @@ ActiveRecord::Schema.define(version: 20140812012459) do
     t.datetime "updated_at"
   end
 
-  add_index "teams", ["name"], name: "index_teams_on_name", unique: true
-
   create_table "users", force: true do |t|
     t.string   "uid",            null: false
     t.string   "nick",           null: false

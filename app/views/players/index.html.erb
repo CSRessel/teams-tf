@@ -53,7 +53,7 @@
         <div style="text-align: center;">
           <%= will_paginate @players %>
         </div>
-        <table id="players" width="100%">
+        <table class="my-table" width="100%">
           <tr>
             <th class="my-table-heading">Name</th>
 	          <th><%= sort_link @search, :league_level, "League and level" %></th>
@@ -71,16 +71,16 @@
             <%# TODO: have whole tr link to player %>
             <tr class="my-table-entry">
 	            <td><%= link_to User.find(player.user_id).nick, player %></td>
-              <td><%= player.league_level %></td>
-              <td><%= player.scout %></td>
-              <td><%= player.soldier %></td>
-              <td><%= player.pyro %></td>
-              <td><%= player.demoman %></td>
-              <td><%= player.heavy %></td>
-              <td><%= player.engineer %></td>
-              <td><%= player.medic %></td>
-              <td><%= player.sniper %></td>
-              <td><%= player.spy %></td>
+              <td><%= link_to player.league_level, player %></td>
+              <td><%= link_to player.scout ? "true" : "false", player %></td>
+              <td><%= link_to player.soldier ? "true" : "false", player %></td>
+              <td><%= link_to player.pyro ? "true" : "false", player %></td>
+              <td><%= link_to player.demoman ? "true" : "false", player %></td>
+              <td><%= link_to player.heavy ? "true" : "false", player %></td>
+              <td><%= link_to player.engineer ? "true" : "false", player %></td>
+              <td><%= link_to player.medic ? "true" : "false", player %></td>
+              <td><%= link_to player.sniper ? "true" : "false", player %></td>
+              <td><%= link_to player.spy ? "true" : "false", player %></td>
             </tr>
           <% end %>
         </table>

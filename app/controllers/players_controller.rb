@@ -11,7 +11,7 @@ class PlayersController < ApplicationController
     @player.user_id = current_user.id
     if @player.save
       flash[:success] = 'player listing created'
-      redirect_to players_path
+      redirect_to player_path(@player)
     else
       render 'new'
     end
@@ -20,8 +20,7 @@ class PlayersController < ApplicationController
   def show
     @player = Player.find(params[:id])
     @reviews = Review.where(player_id: params[:id])
-    @review = Review.new
-    session[:player_id] = params[:id]
+    @review = Review.new(player_id: params[:id])
   end
 
   def edit

@@ -9,36 +9,50 @@
     </div>
     <div class="col-md-6 well well-lg">
       <br />
-      <p class="text-left">
-      Leader .................. <%= link_to User.find(@team.user_id).nick, User.find(@team.user_id) %><br />
-      Game ................... <%= @team.game_type %><br />
-      League and level ... <%= @team.league_level %><br />
-      Location ................ <%= @team.location %><br />
-      </p>
+      <div class="row">
+        <div class="col-md-6 text-left">
+          <p>Leader</p>
+          <p>Game</p>
+          <p>League and level</p>
+          <p>Location</p>
+        </div>
+        <div class="col-md-6 text-right">
+          <p><%= link_to @team.user.nick, @team.user %></p>
+          <p><%= @team.game_type %></p>
+          <p><%= @team.league_level %></p>
+          <p><%= @team.location %></p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 <hr />
 <div class="container">
   <div class="row well well-lg">
-    <div class="col-md-3">
-    </div>
-    <div class="col-md-2">
+    <div class="col-md-4">
       <p class="text-right">Scout:   <%= @team.scout    %></p>
       <p class="text-right">Demoman: <%= @team.demoman  %></p>
       <p class="text-right">Medic:   <%= @team.medic    %></p>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-4">
       <p class="text-right">Soldier:   <%= @team.soldier  %></p>
       <p class="text-right">Heavy:     <%= @team.heavy    %></p>
       <p class="text-right">Sniper:    <%= @team.sniper   %></p>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-4">
       <p class="text-right">Pyro:      <%= @team.pyro     %></p>
       <p class="text-right">Engineer:  <%= @team.engineer %></p>
       <p class="text-right">Spy:       <%= @team.spy      %></p>
     </div>
-    <div class="col-md-3">
-    </div>
   </div>
 </div>
+<hr />
+<% if current_user.id == Team.find(params[:id]).user_id %>
+
+  <br />
+  <div class="text-center">
+    <%= link_to raw('<i class="glyphicon glyphicon-pencil"></i> edit'), edit_team_path(@team), :class => 'btn-lg btn-special' %>
+    <%= link_to raw('<i class="glyphicon glyphicon-trash"></i> delete'), team_path(@team), :class => 'btn-lg btn-special', :method => :delete %>
+  </div>
+  <br />
+<% end %>
