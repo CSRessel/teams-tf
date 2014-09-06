@@ -27,7 +27,7 @@
         <hr />
         <% if @players and !@players.empty? %>
           <% @players.each do |p| %>
-            <h4><%= link_to p.league_level, player_path(p) %> <%= link_to raw('<i class="glyphicon glyphicon-pencil"></i> edit'), edit_player_path(p), :class => "btn-sm btn-special" %> <%= link_to raw('<i class="glyphicon glyphicon-trash"></i> delete'), player_path(p), :method => :delete, :class => "btn-sm btn-special" %></h4>
+            <h4><%= link_to p.league_level, player_path(p) %> <%= link_to raw('<i class="glyphicon glyphicon-pencil"></i> edit'), edit_player_path(p), :class => "btn-sm btn-special" %> <%= link_to raw('<i class="glyphicon glyphicon-trash"></i> delete'), player_path(p), :method => :delete, :class => "btn-sm btn-special", :confirm => "Are you sure you would like to delete this listing?" %></h4>
           <% end %>
         <% else %>
           <% if @teams and @teams.empty? %>
@@ -46,7 +46,7 @@
         <hr />
         <% if @teams and !@teams.empty? %>
           <% @teams.each do |t| %>
-            <%= link_to t.league_level, team_path(t) %> <%= link_to raw('<i class="glyphicon glyphicon-pencil"></i> edit'), edit_team_path(t), :class => "btn-sm btn-special" %> <%= link_to raw('<i class="glyphicon glyphicon-trash"></i> delete'), team_path(t), :method => :delete, :class => "btn-sm btn-special" %>
+            <h4><%= link_to raw('<i class="glyphicon glyphicon-trash"></i> delete'), team_path(t), :method => :delete, :class => "btn-sm btn-special", :confirm => "Are you sure you would like to delete this listing?" %> <%= link_to raw('<i class="glyphicon glyphicon-pencil"></i> edit'), edit_team_path(t), :class => "btn-sm btn-special" %> <%= link_to t.league_level, team_path(t) %></h4>
           <% end %>
         <% else %>
           <% if @teams and @teams.empty? %>

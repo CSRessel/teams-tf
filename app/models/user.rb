@@ -1,10 +1,9 @@
 class User < ActiveRecord::Base
   before_create :create_remember_token
-  before_destroy :destroy_players_teams_reviews
 
-  has_many :teams
-  has_many :players
-  has_many :reviews
+  has_many :teams,    :dependent => :destroy
+  has_many :players,  :dependent => :destroy
+  has_many :reviews,  :dependent => :destroy
 
   validates :uid,         presence: true, uniqueness: true
   validates :nick,        presence: true
@@ -24,17 +23,5 @@ class User < ActiveRecord::Base
 
     def create_remember_token
       self.remember_token = User.digest(User.new_remember_token)
-    end
-
-    def destroy_players_teams_reviews
-      self.players.each do |p|
-        p.destroy
-      end
-      self.teams.each do |t|
-        t.destroy
-      end
-      self.reviews.each do |r|
-        r.destroy
-      end
     end
 end

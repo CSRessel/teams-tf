@@ -14,6 +14,10 @@
           <%= f.label :league_level_cont, "Level:" %>
           <%= f.select :league_level_cont, options_for_select(%w[Iron Steel Silver Gold Platinum Open Invite Div6 Div5 Div4 Div3 Div2 Div1]), :include_blank => true %>
         </p><br />
+        <p class="text-right">
+          <%= f.label :location_eq, "Location:" %>
+          <%= f.select :location_eq, options_for_select(%w[NA EU]), :include_blank => true %>
+        </p><br />
         <hr />
         <div class="row">
           <div class="col-md-6">
@@ -57,6 +61,7 @@
           <tr>
             <th class="my-table-heading"><%= "Team" %></th>
 	          <th><%= sort_link @search, :league_level, "League and level" %></th>
+            <th><%= sort_link @search, :location, "Location" %></th>
 	          <th><%= sort_link @search, :scout, "Scout" %></th>
 	          <th><%= sort_link @search, :soldier, "Soldier" %></th>
 	          <th><%= sort_link @search, :pyro, "Pyro" %></th>
@@ -71,6 +76,7 @@
             <tr class="my-table-entry">
 	            <td><%= link_to team.name, team %></td>
               <td><%= link_to team.league_level, team %></td>
+              <td><%= link_to team.location, team %></td>
               <td><%= link_to team.scout ? "true" : "false", team %></td>
               <td><%= link_to team.soldier ? "true" : "false", team %></td>
               <td><%= link_to team.pyro ? "true" : "false", team %></td>

@@ -1,8 +1,6 @@
 class Player < ActiveRecord::Base
-  before_destroy :destroy_reviews
-
   belongs_to :user
-  has_many :reviews
+  has_many :reviews, :dependent => :destroy
 
   validates :game_type,     presence: true, inclusion: { in: %w(6v6 Highlander) }
   #validates :league,       presence: true, inclusion: { in: %w(UGC) },                              if: :is_highlander?
@@ -39,12 +37,4 @@ class Player < ActiveRecord::Base
   def has_class?
     scout or soldier or pyro or demoman or heavy or engineer or medic or sniper or spy
   end
-
-  private
-
-    def destroy_reviews
-      self.reviews.each do |r|
-        r.destroy
-      end
-    end
 end
